@@ -1,0 +1,7 @@
+bin/
+obj/
+publish/
+installer/Output/
+.vs/
+.DS_Store
+*.user

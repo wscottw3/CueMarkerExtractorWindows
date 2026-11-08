@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:CueMarkerExtractorApp"
+        mc:Ignorable="d" d:DesignWidth="460" d:DesignHeight="520"
+        x:Class="CueMarkerExtractorApp.MainWindow"
+        Title="Cue Marker Extractor"
+        Width="460" Height="520" MinWidth="420" MinHeight="460"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="24" RowDefinitions="Auto,160,Auto,*,Auto,Auto">
+        <TextBlock Grid.Row="0" Text="MP3 Cue Markers → CUE Sheet"
+                   FontSize="18" FontWeight="Bold" Margin="0,0,0,16"/>
+
+        <Border Grid.Row="1" x:Name="DropZone"
+                BorderBrush="Gray" BorderThickness="2" CornerRadius="10"
+                Background="Transparent">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="8" Margin="16">
+                <TextBlock Text="🎵" FontSize="34" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="DropZoneLabel" Text="Drag an MP3 file here"
+                           HorizontalAlignment="Center" Foreground="Gray"
+                           TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="Reads ID3v2 CHAP frames and Adobe Audition XMP markers"
+                           FontSize="11" Foreground="#999999" HorizontalAlignment="Center"
+                           TextWrapping="Wrap" TextAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Grid.Row="2" x:Name="ErrorText" Foreground="Crimson"
+                   TextWrapping="Wrap" Margin="0,12,0,0" IsVisible="False"/>
+
+        <ListBox Grid.Row="3" x:Name="ChapterList" Margin="0,12,0,0" IsVisible="False">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="local:ChapterRow">
+                    <Grid ColumnDefinitions="28,*,Auto">
+                        <TextBlock Grid.Column="0" Text="{Binding Index}" Foreground="Gray"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Title}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Timecode}" Foreground="Gray" Margin="8,0,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Grid.Row="4" x:Name="ExportButton" Content="Export CUE File…"
+                Margin="0,12,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                Padding="0,10" IsVisible="False" Click="ExportButton_Click"/>
+
+        <TextBlock Grid.Row="5" x:Name="ConfirmationText" Foreground="Gray"
+                   FontSize="11" Margin="0,6,0,0" IsVisible="False"/>
+    </Grid>
+</Window>
