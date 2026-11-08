@@ -108,3 +108,13 @@ about invalid XML than Swift's `XMLParser`, and rejected a stray NUL byte
 some real Audition files leave after the closing `<?xpacket end="w"?>`
 processing instruction — fixed in `XmpMarkerParser` by stripping embedded
 NUL characters before parsing (see `XmpMarkerParserTests.TolerantOfTrailingNulByte`).
+
+## License
+
+Copyright © 2026 Scott Westerman. Licensed under
+[Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE) — you
+may use, modify, and redistribute this project, including commercially, as
+long as you give appropriate credit.
+
+The app bundles third-party libraries (such as Avalonia, MIT-licensed) that
+remain under their own licenses.
